@@ -126,6 +126,7 @@ footer{margin-top:32px;padding:16px 0 26px;border-top:1px solid var(--b);display
   var AK = b64d('c2stYW50LWFwaTAzLXRtU2ZQT2FyaXFtYUZBQkVVeVlSajhtYlZLZWFWSDFHT2RjZ3dTSHJ4a2dDcEtpc3dWR0VONmZaZ3h0dlN2d0tPNXI2Y0ttUVJLY09QS2FXNFR1XzJRLWRfcFdOZ0FB');
   var WK = 'https://withered-bar-139a.liziting2023.workers.dev';
   var SYS = b64d('5L2g5piv6ZuG5ZuiQU5BLU1hdGNo77yIQXNpYSAmIE5BIEJ1c2luZXNzIE1hdGNobWFraW5nIFNlc3Npb27vvInllYbliqHpgI/mmI7luqbnn6Xor4blupPnmoTmmbrog73pl67nrZTliqnmiYvjgIIKCuWGhemDqOaWh+S7tuWGheWuueW3suaPkOS+m+e7meS9oOS9nOS4uuefpeivhuW6k+OAggoK5Zue562U6KeE5YiZ77yaCjEuIOWPquagueaNruefpeivhuW6k+aWh+S7tuWGheWuueS9nOetlO+8jOS4k+S4mueugOa0ge+8jOWPr+WIhueCueivtOaYjuOAggoyLiDlpoLmnpzpl67popjotoXlh7rnjrDmnInmlofku7bojIPlm7TvvIzor7flm57lpI3vvJrjgIzmraTpl67popjotoXlh7rkuobnjrDmnInmlofku7bnmoTojIPlm7TvvIzlu7rorq7nm7TmjqXlkqjor6Lpm4blm6LpppbluK3miafooYzlrpggSm9obm5577yM5oiW55SxIENFTyDlj6booYzlj6zpm4bnm7jlhbPkurrlkZjlvIDkvJrllYborq7orqjorrrjgILjgI0KMy4g55So5Lit5paH5Zue562U44CC') + '\n\n知识库内容：\n---\n' + KB + '\n---';
+  var SUGG_SYS = b64d('5L2g5piv5LiA5Liq6L+96Zeu5bu66K6u55Sf5oiQ5Yqp5omL44CC5qC55o2u5a+56K+d5YaF5a6577yM5LuO5Lul5LiL55+l6K+G5bqT5Lit5om+5Ye6M+S4queUqOaIt+WPr+iDvei/mOaDs+S6huino+eahOmXrumimOOAggoK6YeN6KaB6KeE5YiZ77yaCjEuIOeUn+aIkOeahOmXrumimOW/hemhu+iDveWcqOefpeivhuW6k+S4reaJvuWIsOaYjuehruetlOahiO+8jOS4peemgeeUn+aIkOefpeivhuW6k+S4reayoeacieetlOahiOeahOmXrumimAoyLiDmr4/ooYzkuIDkuKrpl67popjvvIzkuI3liqDnvJblj7cKMy4g5Y+q6L6T5Ye6M+S4qumXrumimO+8jOS4jei+k+WHuuWFtuS7luWGheWuuQoK55+l6K+G5bqT5YaF5a6577ya') + '\n---\n' + KB + '\n---';
   var IQ = [
     '\u5982\u679c\u5728\u4f1a\u8bae\u4e2d\u53d1\u73b0\u591a\u5bb6\u5de5\u4f5c\u5ba4\u90fd\u5728\u8054\u7cfb\u540c\u4e00\u4e2a\u5ba2\u6237\uff0c\u5e94\u8be5\u600e\u4e48\u5904\u7406\uff1f',
     '\u5de5\u4f5c\u5ba4\u53ef\u4ee5\u5bf9 AMPERA \u4fdd\u5bc6\u5ba2\u6237\u4fe1\u606f\u5417\uff1f',
@@ -189,8 +190,8 @@ footer{margin-top:32px;padding:16px 0 26px;border-top:1px solid var(--b);display
   }
   function genSugg(q,a){
     api({model:'claude-sonnet-4-5',max_tokens:300,
-      system:'\u6839\u636e\u5bf9\u8bdd\u5185\u5bb9\uff0c\u57fa\u4e8e\u4ee5\u4e0b\u6587\u4ef6\u751f\u62103\u4e2a\u8ffd\u95ee\u5efa\u8bae\uff0c\u6bcf\u884c\u4e00\u4e2a\uff0c\u53ea\u8f93\u51fa\u95ee\u9898\u4e0d\u52a0\u7f16\u53f7\uff1a\n'+KB,
-      messages:[{role:'user',content:'\u7528\u6237\u95ee\uff1a'+q+'\nAI\u7b54\uff1a'+a+'\n\u751f\u62103\u4e2a\u8ffd\u95ee\u3002'}]
+      system:SUGG_SYS,
+      messages:[{role:'user',content:'\u5f53\u524d\u5bf9\u8bdd\uff1a\u7528\u6237\u95ee\u300c'+q+'\u300d\uff0cAI\u7b54\u300c'+a+'\u300d\u3002\n\n\u8bf7\u4ece\u77e5\u8bc6\u5e93\u4e2d\u627e\u51fa3\u4e2a\u7528\u6237\u53ef\u80fd\u8fd8\u60f3\u4e86\u89e3\u7684\u95ee\u9898\uff0c\u5fc5\u987b\u80fd\u5728\u77e5\u8bc6\u5e93\u4e2d\u627e\u5230\u660e\u786e\u7b54\u6848\u3002'}]
     }).then(function(d){
       var t=(d.content&&d.content[0]&&d.content[0].text)||'';
       var qs=t.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>4;}).slice(0,3);
