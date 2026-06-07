@@ -195,7 +195,7 @@ footer{margin-top:32px;padding:16px 0 26px;border-top:1px solid var(--b);display
   }
 
   function genSugg(q,a){
-    api({model:'claude-sonnet-4-20250514',max_tokens:300,
+    api({model:'claude-sonnet-4-5',max_tokens:300,
       system:'\u6839\u636e\u5bf9\u8bdd\u5185\u5bb9\uff0c\u57fa\u4e8e\u4ee5\u4e0b\u6587\u4ef6\u751f\u62103\u4e2a\u8ffd\u95ee\u5efa\u8bae\uff0c\u6bcf\u884c\u4e00\u4e2a\uff0c\u53ea\u8f93\u51fa\u95ee\u9898\u4e0d\u52a0\u7f16\u53f7\uff1a\n'+KB,
       messages:[{role:'user',content:'\u7528\u6237\u95ee\uff1a'+q+'\nAI\u7b54\uff1a'+a+'\n\u751f\u62103\u4e2a\u8ffd\u95ee\uff0c\u5fc5\u987b\u80fd\u4ece\u6587\u4ef6\u627e\u5230\u7b54\u6848\u3002'}]
     }).then(function(d){
@@ -214,7 +214,7 @@ footer{margin-top:32px;padding:16px 0 26px;border-top:1px solid var(--b);display
     var bub=addMsg('ai','');
     hist.push({role:'user',content:q});
     var sys='\u4f60\u662f\u96c6\u56e2ANA-Match\u5546\u52a1\u900f\u660e\u5ea6\u77e5\u8bc6\u5e93\u7684\u667a\u80fd\u95ee\u7b54\u52a9\u624b\u3002\n\n\u5185\u90e8\u6587\u4ef6\uff1a\n---\n'+KB+'\n---\n\n\u89c4\u5219\uff1a\u53ea\u6839\u636e\u6587\u4ef6\u5185\u5bb9\u4f5c\u7b54\uff1b\u65e0\u76f8\u5173\u4fe1\u606f\u8bf7\u5982\u5b9e\u8bf4\u660e\uff1b\u7528\u4e2d\u6587\u56de\u7b54\uff0c\u4e13\u4e1a\u7b80\u6d01\uff0c\u53ef\u5206\u70b9\u8bf4\u660e\u3002';
-    api({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:hist})
+    api({model:'claude-sonnet-4-5',max_tokens:1000,system:sys,messages:hist})
       .then(function(d){
         var r=(d.content&&d.content[0]&&d.content[0].text)||'\u62b1\u6b49\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5\u3002';
         bub.innerHTML=fmt(r);
